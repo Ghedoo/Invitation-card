@@ -1,7 +1,7 @@
 import RevealOnScroll from "../../components/RevealOnScroll/RevealOnScroll";
 import OrnamentDivider from "../../components/OrnamentDivider/OrnamentDivider";
 import { story } from "../../data/content";
-import storyImg from "../../assets/images/gallery-5.jpg";
+import storyImg from "../../assets/images/WhatsApp Image 2026-09-17 at 3.52.25 PM.jpeg";
 import "./OurStory.css";
 
 export default function OurStory() {
@@ -10,7 +10,7 @@ export default function OurStory() {
       <div className="container story__grid">
         <RevealOnScroll className="story__media" y={0}>
           <div className="story__frame">
-            <img src={storyImg} alt="لحظة رومانسية من قصة راغد وياسمين" loading="lazy" />
+            <img src={storyImg} alt="لحظة رومانسية" loading="lazy" />
           </div>
           <span className="story__frame-deco" aria-hidden="true" />
         </RevealOnScroll>
