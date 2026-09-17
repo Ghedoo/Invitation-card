@@ -26,18 +26,31 @@ export default function App() {
 
   // امنع تمرير الصفحة الخلفية أثناء عرض البطاقة
   useEffect(() => {
-    document.body.style.overflow = cardOpened ? "" : "hidden";
+    document.body.style.overflowY = cardOpened ? "auto" : "hidden";
+
+    return () => {
+      document.body.style.overflowY = "";
+    };
   }, [cardOpened]);
 
   useEffect(() => {
     if (!cardOpened) return;
 
     let frame;
+    let stopAutoScroll;
     const timer = window.setTimeout(() => {
       const startScroll = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const duration = 60000;
       const startTime = performance.now();
+
+      stopAutoScroll = () => {
+        window.cancelAnimationFrame(frame);
+      };
+
+      ["wheel", "touchstart", "pointerdown", "keydown"].forEach((eventName) => {
+        window.addEventListener(eventName, stopAutoScroll, { once: true, passive: true });
+      });
 
       const animateScroll = (currentTime) => {
         const progress = Math.min((currentTime - startTime) / duration, 1);
@@ -54,6 +67,11 @@ export default function App() {
     return () => {
       window.clearTimeout(timer);
       if (frame) window.cancelAnimationFrame(frame);
+      if (stopAutoScroll) {
+        ["wheel", "touchstart", "pointerdown", "keydown"].forEach((eventName) => {
+          window.removeEventListener(eventName, stopAutoScroll);
+        });
+      }
     };
   }, [cardOpened]);
 
