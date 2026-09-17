@@ -16,17 +16,174 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [cardOpened, setCardOpened] = useState(false);
 
-  // شاشة تحميل قصيرة أثناء تجهيز الخطوط والصور — تمنح إحساسًا فاخرًا
-  // بدل ظهور مفاجئ للمحتوى.
+  // شاشة التحميل
   useEffect(() => {
-    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-    const minDelay = new Promise((res) => setTimeout(res, 900));
-    Promise.all([fontsReady, minDelay]).then(() => setLoading(false));
+    const fontsReady = document.fonts
+      ? document.fonts.ready
+      : Promise.resolve();
+
+    const minDelay = new Promise((res) =>
+      setTimeout(res, 900)
+    );
+
+    Promise.all([fontsReady, minDelay]).then(() => {
+      setLoading(false);
+    });
   }, []);
 
-  // امنع تمرير الصفحة الخلفية أثناء عرض البطاقة
+  // منع تمرير الصفحة أثناء ظهور البطاقة
   useEffect(() => {
     document.body.style.overflow = cardOpened ? "" : "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [cardOpened]);
+
+  // Auto Scroll بعد فتح البطاقة
+  useEffect(() => {
+    if (!cardOpened) return;
+
+    let frame = null;
+    let timer = null;
+    let stopped = false;
+
+    // مدة السكرول: 80 ثانية
+    const duration = 80000;
+
+    // إيقاف الـ Auto Scroll
+    const stopAutoScroll = () => {
+      if (stopped) return;
+
+      stopped = true;
+
+      if (frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+      }
+
+      if (timer !== null) {
+        clearTimeout(timer);
+        timer = null;
+      }
+
+      window.removeEventListener("wheel", stopAutoScroll);
+      window.removeEventListener("touchstart", stopAutoScroll);
+      window.removeEventListener("pointerdown", stopAutoScroll);
+      window.removeEventListener("keydown", stopAutoScroll);
+    };
+
+    // بدء الـ Auto Scroll
+    const startAutoScroll = () => {
+      if (stopped) return;
+
+      const startScroll = window.scrollY;
+
+      const maxScroll =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      if (maxScroll <= startScroll) {
+        return;
+      }
+
+      const startTime = performance.now();
+
+      const animateScroll = (currentTime) => {
+        if (stopped) return;
+
+        const elapsed = currentTime - startTime;
+
+        const progress = Math.min(
+          elapsed / duration,
+          1
+        );
+
+        // Ease In Out
+       const easedProgress =
+  1 - Math.pow(1 - progress, 1.4);
+
+        const currentScroll =
+          startScroll +
+          (maxScroll - startScroll) *
+            easedProgress;
+
+        window.scrollTo(0, currentScroll);
+
+        if (progress < 1) {
+          frame = requestAnimationFrame(
+            animateScroll
+          );
+        } else {
+          frame = null;
+        }
+      };
+
+      frame = requestAnimationFrame(
+        animateScroll
+      );
+    };
+
+    // انتظار نصف ثانية بعد فتح البطاقة
+    timer = window.setTimeout(() => {
+      startAutoScroll();
+    }, 500);
+
+    // أي تفاعل من المستخدم يوقف السكرول التلقائي
+    window.addEventListener("wheel", stopAutoScroll, {
+      passive: true,
+    });
+
+    window.addEventListener(
+      "touchstart",
+      stopAutoScroll,
+      {
+        passive: true,
+      }
+    );
+
+    window.addEventListener(
+      "pointerdown",
+      stopAutoScroll,
+      {
+        passive: true,
+      }
+    );
+
+    window.addEventListener("keydown", stopAutoScroll);
+
+    // تنظيف
+    return () => {
+      stopped = true;
+
+      if (frame !== null) {
+        cancelAnimationFrame(frame);
+      }
+
+      if (timer !== null) {
+        clearTimeout(timer);
+      }
+
+      window.removeEventListener(
+        "wheel",
+        stopAutoScroll
+      );
+
+      window.removeEventListener(
+        "touchstart",
+        stopAutoScroll
+      );
+
+      window.removeEventListener(
+        "pointerdown",
+        stopAutoScroll
+      );
+
+      window.removeEventListener(
+        "keydown",
+        stopAutoScroll
+      );
+    };
   }, [cardOpened]);
 
   return (
@@ -34,11 +191,15 @@ export default function App() {
       <AmbientBackground />
 
       {loading && <Loader />}
+
       {!loading && !cardOpened && (
-        <InvitationCard onOpened={() => setCardOpened(true)} />
+        <InvitationCard
+          onOpened={() => setCardOpened(true)}
+        />
       )}
 
       <Navigation />
+
       <MusicButton autoPlay={cardOpened} />
 
       <main>
@@ -49,6 +210,7 @@ export default function App() {
         <Location />
         <RSVP />
       </main>
+
       <Footer />
     </>
   );
