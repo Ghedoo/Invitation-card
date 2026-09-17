@@ -4,7 +4,7 @@ import Lightbox from "../../components/Lightbox/Lightbox";
 import { gallery as galleryData } from "../../data/content";
 import g1 from "../../assets/images/Gemini_Generated_Image_ml8aqxml8aqxml8a.jfif";
 import g2 from "../../assets/images/Gemini_Generated_Image_lwr1ielwr1ielwr1.jfif";
-import g3 from "../../assets/images/Gemini_Generated_Image_sbphs3sbphs3sbph.jpeg";
+import g3 from "../../assets/images/WhatsApp Image 2026-09-17 at 7.25.20 PM.jpeg";
 import "./Gallery.css";
 
 const imgs = [g1, g2, g3];
