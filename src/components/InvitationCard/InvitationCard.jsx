@@ -49,6 +49,13 @@ export default function InvitationCard({ onOpened }) {
         src={coverImage}
         alt="غلاف دعوة الخطوبة"
       />
+      <img
+        className="invite-scene__flap"
+        src={coverImage}
+        alt=""
+        aria-hidden="true"
+      />
+      <span className="invite-scene__seal" aria-hidden="true" />
       <span className="invite-scene__hint">اضغطوا على الصورة لفتح الدعوة</span>
     </div>
   );
