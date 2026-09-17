@@ -32,14 +32,29 @@ export default function App() {
   useEffect(() => {
     if (!cardOpened) return;
 
+    let frame;
     const timer = window.setTimeout(() => {
+      const startScroll = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const targetScroll = Math.min(window.innerHeight * 0.78, maxScroll);
+      const duration = 60000;
+      const startTime = performance.now();
 
-      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+      const animateScroll = (currentTime) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        window.scrollTo(0, startScroll + (maxScroll - startScroll) * progress);
+
+        if (progress < 1) {
+          frame = window.requestAnimationFrame(animateScroll);
+        }
+      };
+
+      frame = window.requestAnimationFrame(animateScroll);
     }, 250);
 
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, [cardOpened]);
 
   return (
