@@ -1,0 +1,67 @@
+.event__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.event__card {
+  background: var(--ivory);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+  transition: background var(--dur-fast) var(--ease-soft);
+}
+
+.event__card:hover {
+  background: #f0e9d8;
+}
+
+.event__card-label {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+}
+
+.event__card-value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.event__countdown-wrap {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.event__countdown-title {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: var(--gold-deep);
+  letter-spacing: 0.05em;
+}
+
+/* تكييف مكوّن العدّاد التنازلي مع خلفية القسم الفاتحة */
+.event .countdown__cell {
+  background: rgba(156, 122, 66, 0.06);
+  border-color: rgba(156, 122, 66, 0.3);
+}
+
+.event .countdown__value {
+  color: var(--gold-deep);
+}
+
+.event .countdown__label {
+  color: #6a6152;
+}

@@ -1,0 +1,54 @@
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-bg__canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.8;
+}
+
+.ambient-bg__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.22;
+  will-change: transform;
+}
+
+.ambient-bg__glow--a {
+  width: 44vw;
+  height: 44vw;
+  top: -10vw;
+  right: -10vw;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  animation: floatA 22s ease-in-out infinite;
+}
+
+.ambient-bg__glow--b {
+  width: 36vw;
+  height: 36vw;
+  bottom: -8vw;
+  left: -8vw;
+  background: radial-gradient(circle, var(--rose) 0%, transparent 70%);
+  animation: floatB 26s ease-in-out infinite;
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-4%, 5%); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(5%, -4%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-bg__glow { animation: none; }
+}

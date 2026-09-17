@@ -1,0 +1,58 @@
+.invite-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.8s var(--ease-soft),
+    opacity 0.8s var(--ease-soft),
+    filter 0.8s var(--ease-soft);
+  will-change: opacity, filter;
+}
+
+.invite-scene.is-opening {
+  pointer-events: none;
+}
+
+.invite-scene__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  user-select: none;
+}
+
+.invite-scene__hint {
+  position: absolute;
+  bottom: clamp(1.25rem, 4vw, 2.5rem);
+  padding: 0.65rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(13, 25, 23, 0.45);
+  backdrop-filter: blur(5px);
+  color: var(--ivory-dim);
+  font-size: var(--fs-small);
+  letter-spacing: 0.06em;
+  font-weight: 300;
+  animation: hintPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invite-scene__hint {
+    animation: none;
+  }
+}

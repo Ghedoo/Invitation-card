@@ -1,0 +1,34 @@
+.countdown {
+  display: flex;
+  gap: clamp(0.6rem, 2.5vw, 1.4rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.countdown__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 72px;
+  padding: 1.1rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(201, 168, 118, 0.04);
+}
+
+.countdown__value {
+  display: inline-block;
+  font-family: var(--font-accent);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--gold-bright);
+  font-variant-numeric: tabular-nums;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+}
+
+.countdown__label {
+  font-size: var(--fs-small);
+  color: var(--ivory-dim);
+  letter-spacing: 0.06em;
+}

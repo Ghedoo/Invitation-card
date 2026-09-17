@@ -1,0 +1,60 @@
+:root {
+  /* ---- Palette ---- */
+  --ink: #0d1917;
+  --ink-soft: #142823;
+  --ink-softer: #1b332c;
+  --ivory: #f6f1e4;
+  --ivory-dim: #ece4d0;
+  --gold: #c9a876;
+  --gold-bright: #e3c896;
+  --gold-deep: #9c7a42;
+  --rose: #c08497;
+  --rose-soft: #d9a9b6;
+  --line: rgba(201, 168, 118, 0.28);
+  --shadow-color: 30, 15, 5;
+
+  /* ---- Typography ---- */
+  --font-display: "Aref Ruqaa", "Amiri", serif;
+  --font-body: "Tajawal", "Segoe UI", sans-serif;
+  --font-accent: "Cormorant Garamond", serif;
+
+  /* ---- Type scale ---- */
+  --fs-hero: clamp(2.6rem, 8vw, 5.5rem);
+  --fs-h1: clamp(2.1rem, 5vw, 3.4rem);
+  --fs-h2: clamp(1.6rem, 3.4vw, 2.4rem);
+  --fs-h3: clamp(1.2rem, 2.2vw, 1.6rem);
+  --fs-body: clamp(0.98rem, 1.2vw, 1.08rem);
+  --fs-small: 0.85rem;
+  --fs-eyebrow: 0.78rem;
+
+  /* ---- Spacing ---- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+  --space-2xl: 10rem;
+
+  /* ---- Layout ---- */
+  --container-w: 1100px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 28px;
+
+  /* ---- Motion ---- */
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.35s;
+  --dur-med: 0.7s;
+  --dur-slow: 1.2s;
+
+  --nav-h: 84px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-h: 64px;
+    --space-xl: 4.5rem;
+    --space-2xl: 6rem;
+  }
+}

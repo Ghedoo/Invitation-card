@@ -1,0 +1,15 @@
+.ornament {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: var(--gold);
+}
+
+.ornament svg {
+  width: clamp(140px, 20vw, 220px);
+  height: auto;
+}
+
+.ornament--ivory {
+  color: var(--gold-deep);
+}
