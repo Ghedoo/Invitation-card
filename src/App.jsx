@@ -48,8 +48,7 @@ export default function App() {
     let timer = null;
     let stopped = false;
 
-    // مدة السكرول: 60 ثانية
-    const duration = 60000;
+    const scrollSpeed = 1.6;
 
     // إيقاف الـ Auto Scroll
     const stopAutoScroll = () => {
@@ -80,49 +79,33 @@ export default function App() {
       const scrollElement = document.scrollingElement;
       if (!scrollElement) return;
 
-      const startScroll = scrollElement.scrollTop;
       const getMaxScroll = () =>
         Math.max(0, scrollElement.scrollHeight - scrollElement.clientHeight);
 
-      if (getMaxScroll() <= startScroll) {
-        return;
-      }
-
-      const startTime = performance.now();
+        let settledFrames = 0;
 
       const animateScroll = (currentTime) => {
         if (stopped) return;
 
-        const elapsed = currentTime - startTime;
-
-        const progress = Math.min(
-          elapsed / duration,
-          1
-        );
-
-        // Ease In Out
-        const easedProgress =
-          progress < 0.5
-            ? 2 * progress * progress
-            : 1 -
-              Math.pow(-2 * progress + 2, 2) / 2;
 
         const maxScroll = getMaxScroll();
-        const currentScroll =
-          startScroll +
-          (maxScroll - startScroll) *
-            easedProgress;
 
-        scrollElement.scrollTop = currentScroll;
 
-        if (progress < 1) {
-          frame = requestAnimationFrame(
-            animateScroll
-          );
-        } else {
-          scrollElement.scrollTop = getMaxScroll();
-          frame = null;
-        }
+          const remaining = maxScroll - scrollElement.scrollTop;
+
+          if (remaining > 1) {
+            scrollElement.scrollTop += Math.min(scrollSpeed, remaining);
+            settledFrames = 0;
+          } else {
+            settledFrames += 1;
+          }
+
+          if (settledFrames < 90) {
+            frame = requestAnimationFrame(animateScroll);
+          } else {
+            scrollElement.scrollTop = getMaxScroll();
+            frame = null;
+          }
       };
 
       frame = requestAnimationFrame(
