@@ -1,7 +1,7 @@
 import RevealOnScroll from "../../components/RevealOnScroll/RevealOnScroll";
 import OrnamentDivider from "../../components/OrnamentDivider/OrnamentDivider";
 import { story } from "../../data/content";
-import storyImg from "../../assets/images/Gemini_Generated_Image_sbphs3sbphs3sbph.jpeg";
+import storyImg from "../../assets/images/Code_Generated_Image.jfif";
 import "./OurStory.css";
 
 export default function OurStory() {
