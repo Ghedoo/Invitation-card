@@ -49,6 +49,14 @@ export default function InvitationCard({ onOpened }) {
         src={coverImage}
         alt="غلاف دعوة الخطوبة"
       />
+        <div className="invite-scene__ornaments" aria-hidden="true">
+          {Array.from({ length: 8 }, (_, index) => (
+            <span
+              key={index}
+              className={`invite-scene__line invite-scene__line--${index + 1}`}
+            />
+          ))}
+        </div>
       <span className="invite-scene__hint">اضغطوا على الصورة لفتح الدعوة</span>
     </div>
   );
