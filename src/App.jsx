@@ -48,7 +48,7 @@ export default function App() {
     let timer = null;
     let stopped = false;
 
-    // مدة السكرول: 80 ثانية
+    // مدة السكرول: 60 ثانية
     const duration = 80000;
 
     // إيقاف الـ Auto Scroll
@@ -100,8 +100,11 @@ export default function App() {
         );
 
         // Ease In Out
-       const easedProgress =
-  1 - Math.pow(1 - progress, 1.4);
+        const easedProgress =
+          progress < 0.5
+            ? 2 * progress * progress
+            : 1 -
+              Math.pow(-2 * progress + 2, 2) / 2;
 
         const currentScroll =
           startScroll +
