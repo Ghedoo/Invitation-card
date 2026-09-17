@@ -36,6 +36,12 @@ export default function Hero({ play }) {
           "-=0.3",
         )
         .fromTo(
+          ".hero__verses",
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          "-=0.3",
+        )
+        .fromTo(
           ".hero__names span",
           { opacity: 0, y: 34 },
           { opacity: 1, y: 0, duration: 0.9, stagger: 0.15 },
@@ -79,6 +85,11 @@ export default function Hero({ play }) {
           ✦
         </span>
         <p className="hero__kicker">{hero.kicker}</p>
+        <div className="hero__verses" dir="rtl">
+          <p>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+          <p>وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+          <p>اليوم نطق قلبي قبولاً وأصبحت له شرعاً وقانوناً</p>
+        </div>
         <h1 className="hero__names">
           <span>{couple.groom}</span>
           <span className="hero__amp">&amp;</span>
