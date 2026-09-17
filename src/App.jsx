@@ -77,11 +77,14 @@ export default function App() {
     const startAutoScroll = () => {
       if (stopped) return;
 
-      const startScroll = window.scrollY;
+      const scrollElement = document.scrollingElement;
+      if (!scrollElement) return;
+
+      const startScroll = scrollElement.scrollTop;
 
       const maxScroll =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
+        scrollElement.scrollHeight -
+        scrollElement.clientHeight;
 
       if (maxScroll <= startScroll) {
         return;
@@ -111,7 +114,7 @@ export default function App() {
           (maxScroll - startScroll) *
             easedProgress;
 
-        window.scrollTo(0, currentScroll);
+        scrollElement.scrollTop = currentScroll;
 
         if (progress < 1) {
           frame = requestAnimationFrame(
