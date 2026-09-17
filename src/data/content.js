@@ -48,7 +48,7 @@ export const gallery = [
 ];
 
 export const location = {
-  venueName: "المعدي",
+  venueName: "المعادي",
   address: "طريق الكورنيش، الدور الأول — الرياض، المملكة العربية السعودية",
   mapsUrl: "https://maps.app.goo.gl/kH4XX7PDq3RMSa6W9",
   embedSrc:
