@@ -1,7 +1,7 @@
 import RevealOnScroll from "../../components/RevealOnScroll/RevealOnScroll";
 import OrnamentDivider from "../../components/OrnamentDivider/OrnamentDivider";
 import { story } from "../../data/content";
-import storyImg from "../../assets/images/WhatsApp Image 2026-09-17 at 3.52.25 PM.jpeg";
+import storyImg from "../../assets/images/ragheed&bassant.jpeg";
 import "./OurStory.css";
 
 export default function OurStory() {
