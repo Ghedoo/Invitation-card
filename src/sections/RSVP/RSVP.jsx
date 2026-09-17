@@ -3,58 +3,45 @@ import gsap from "gsap";
 import RevealOnScroll from "../../components/RevealOnScroll/RevealOnScroll";
 import "./RSVP.css";
 
-const initial = { name: "", guests: "1", attendance: "yes", message: "" };
+const initial = { name: "", message: "" };
 
 export default function RSVP() {
   const [values, setValues] = useState(initial);
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-  const successRef = useRef(null);
+  const [messages, setMessages] = useState([]);
   const formRef = useRef(null);
 
   function update(field, value) {
-    setValues((v) => ({ ...v, [field]: value }));
+    setValues((current) => ({ ...current, [field]: value }));
   }
 
-  function validate() {
-    const errs = {};
-    if (!values.name.trim() || values.name.trim().length < 2) {
-      errs.name = "الرجاء إدخال الاسم الكامل";
-    }
-    const guestsNum = Number(values.guests);
-    if (!guestsNum || guestsNum < 1 || guestsNum > 10) {
-      errs.guests = "عدد الضيوف يجب أن يكون بين ١ و١٠";
-    }
-    return errs;
-  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    const nextErrors = {};
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const errs = validate();
-    setErrors(errs);
-    if (Object.keys(errs).length > 0) {
+    if (values.name.trim().length < 2) {
+      nextErrors.name = "الرجاء إدخال الاسم";
+    }
+    if (!values.message.trim()) {
+      nextErrors.message = "الرجاء كتابة رسالة التهنئة";
+    }
+
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
       gsap.fromTo(
         formRef.current,
         { x: -6 },
-        { x: 0, duration: 0.4, ease: "elastic.out(1, 0.4)" }
+        { x: 0, duration: 0.4, ease: "elastic.out(1, 0.4)" },
       );
       return;
     }
 
-    // في مشروع حقيقي: أرسل القيم إلى خادمك أو خدمة نماذج هنا
-    setSubmitted(true);
-    requestAnimationFrame(() => {
-      gsap.fromTo(
-        successRef.current,
-        { opacity: 0, y: 20, scale: 0.94 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" }
-      );
-      gsap.fromTo(
-        ".rsvp-success__ring",
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(2)", delay: 0.1 }
-      );
-    });
+    setMessages((current) => [
+      ...current,
+      { name: values.name.trim(), message: values.message.trim() },
+    ]);
+    setValues(initial);
+    setErrors({});
   }
 
   return (
@@ -62,84 +49,60 @@ export default function RSVP() {
       <div className="container rsvp__container">
         <RevealOnScroll className="section-head" as="div">
           <span className="eyebrow">تأكيد الحضور</span>
-          <h2 className="section-title">هل ستشرّفوننا؟</h2>
-          <p className="section-sub">نرجو تأكيد حضوركم قبل تاريخ المناسبة بأسبوع.</p>
+          <h2 className="section-title">بانتظاركم</h2>
+          <p className="section-sub">اكتبوا أسماءكم ورسالة تهنئة لنا.</p>
         </RevealOnScroll>
 
-        {!submitted ? (
-          <form className="rsvp__form" ref={formRef} onSubmit={handleSubmit} noValidate>
-            <div className="rsvp__field">
-              <label htmlFor="name">الاسم الكامل</label>
-              <input
-                id="name"
-                type="text"
-                value={values.name}
-                onChange={(e) => update("name", e.target.value)}
-                aria-invalid={!!errors.name}
-                aria-describedby={errors.name ? "name-error" : undefined}
-                placeholder="اكتب اسمك هنا"
-              />
-              {errors.name && (
-                <span id="name-error" className="rsvp__error">
-                  {errors.name}
-                </span>
-              )}
-            </div>
+        <form className="rsvp__form" ref={formRef} onSubmit={handleSubmit} noValidate>
+          <div className="rsvp__field">
+            <label htmlFor="name">الاسم</label>
+            <input
+              id="name"
+              type="text"
+              value={values.name}
+              onChange={(event) => update("name", event.target.value)}
+              aria-invalid={!!errors.name}
+              aria-describedby={errors.name ? "name-error" : undefined}
+              placeholder="اكتب اسمك هنا"
+            />
+            {errors.name && (
+              <span id="name-error" className="rsvp__error">
+                {errors.name}
+              </span>
+            )}
+          </div>
 
-            <div className="rsvp__row">
-              <div className="rsvp__field">
-                <label htmlFor="guests">عدد الضيوف</label>
-                <input
-                  id="guests"
-                  type="number"
-                  min="1"
-                  max="10"
-                  value={values.guests}
-                  onChange={(e) => update("guests", e.target.value)}
-                  aria-invalid={!!errors.guests}
-                  aria-describedby={errors.guests ? "guests-error" : undefined}
-                />
-                {errors.guests && (
-                  <span id="guests-error" className="rsvp__error">
-                    {errors.guests}
-                  </span>
-                )}
-              </div>
+          <div className="rsvp__field">
+            <label htmlFor="message">رسالة التهنئة</label>
+            <textarea
+              id="message"
+              rows="3"
+              value={values.message}
+              onChange={(event) => update("message", event.target.value)}
+              aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? "message-error" : undefined}
+              placeholder="اكتبوا كلمة أو تهنئة لنا..."
+            />
+            {errors.message && (
+              <span id="message-error" className="rsvp__error">
+                {errors.message}
+              </span>
+            )}
+          </div>
 
-              <div className="rsvp__field">
-                <label htmlFor="attendance">الحضور</label>
-                <select
-                  id="attendance"
-                  value={values.attendance}
-                  onChange={(e) => update("attendance", e.target.value)}
-                >
-                  <option value="yes">سأحضر بكل سرور</option>
-                  <option value="no">أعتذر عن الحضور</option>
-                  <option value="maybe">غير مؤكد بعد</option>
-                </select>
-              </div>
-            </div>
+          <button type="submit" className="btn btn--solid rsvp__submit">
+            إرسال التهنئة
+          </button>
+        </form>
 
-            <div className="rsvp__field">
-              <label htmlFor="message">رسالة (اختياري)</label>
-              <textarea
-                id="message"
-                rows="3"
-                value={values.message}
-                onChange={(e) => update("message", e.target.value)}
-                placeholder="اكتبوا كلمة أو تهنئة لنا..."
-              />
-            </div>
-
-            <button type="submit" className="btn btn--solid rsvp__submit">
-              إرسال التأكيد
-            </button>
-          </form>
-        ) : (
-          <div className="rsvp-success" ref={successRef}>
-            <span className="rsvp-success__ring">✓</span>
-            <h3>شكرًا لكم!</h3>
-            <p>تم استلام تأكيدكم بنجاح، ونتشوق لرؤيتكم معنا.</p>
+        {messages.length > 0 && (
+          <div className="rsvp__messages" aria-live="polite">
+            {messages.map((entry, index) => (
+              <article className="rsvp__message" key={`${entry.name}-${index}`}>
+                <strong>{entry.name}</strong>
+                <p>{entry.message}</p>
+              </article>
+            ))}
           </div>
         )}
       </div>

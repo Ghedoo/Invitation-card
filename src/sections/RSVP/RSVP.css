@@ -66,6 +66,28 @@
   margin-top: var(--space-sm);
 }
 
+.rsvp__messages {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.rsvp__message {
+  padding: var(--space-sm) var(--space-md);
+  border-inline-start: 2px solid var(--gold-deep);
+  background: rgba(201, 168, 118, 0.08);
+  text-align: start;
+}
+
+.rsvp__message strong {
+  color: var(--ink);
+}
+
+.rsvp__message p {
+  margin: 0.35rem 0 0;
+  color: #4a453b;
+}
+
 .rsvp-success {
   display: flex;
   flex-direction: column;
