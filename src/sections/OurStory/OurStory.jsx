@@ -1,7 +1,7 @@
 import RevealOnScroll from "../../components/RevealOnScroll/RevealOnScroll";
 import OrnamentDivider from "../../components/OrnamentDivider/OrnamentDivider";
 import { story } from "../../data/content";
-import storyImg from "../../assets/images/story.jpg";
+import storyImg from "../../assets/images/gallery-5.jpg";
 import "./OurStory.css";
 
 export default function OurStory() {
