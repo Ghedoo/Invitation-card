@@ -2,7 +2,7 @@ import { useState } from "react";
 import RevealOnScroll from "../../components/RevealOnScroll/RevealOnScroll";
 import Lightbox from "../../components/Lightbox/Lightbox";
 import { gallery as galleryData } from "../../data/content";
-import g1 from "../../assets/images/gallery-1.jpg";
+import g1 from "../../assets/images/Gemini_Generated_Image_aqagjoaqagjoaqag.jfif";
 import g2 from "../../assets/images/gallery-2.jpg";
 import g3 from "../../assets/images/gallery-3.jpg";
 import g4 from "../../assets/images/gallery-4.jpg";
