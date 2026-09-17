@@ -29,6 +29,7 @@
   .invite-scene__ornaments {
     position: absolute;
     inset: 0;
+    z-index: 2;
     pointer-events: none;
     overflow: hidden;
   }
@@ -37,24 +38,24 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: clamp(7rem, 22vw, 16rem);
-    height: clamp(2.5rem, 7vw, 5rem);
-    border-top: 1.5px solid rgba(226, 190, 117, 0.8);
+    width: clamp(9rem, 28vw, 20rem);
+    height: clamp(3rem, 9vw, 6rem);
+    border-top: 2px solid rgba(184, 126, 27, 0.95);
     border-radius: 50%;
-    filter: drop-shadow(0 0 5px rgba(226, 190, 117, 0.35));
+    filter: drop-shadow(0 0 5px rgba(184, 126, 27, 0.65));
     transform-origin: 0 50%;
     opacity: 0;
     animation: ornamentBloom 5.8s ease-in-out infinite;
   }
 
-  .invite-scene__line--1 { transform: rotate(-166deg) scaleX(0.72); animation-delay: 0.1s; }
-  .invite-scene__line--2 { transform: rotate(-132deg) scaleX(1.05); animation-delay: 0.8s; }
-  .invite-scene__line--3 { transform: rotate(-92deg) scaleX(0.8); animation-delay: 1.5s; }
-  .invite-scene__line--4 { transform: rotate(-42deg) scaleX(1.18); animation-delay: 2.2s; }
-  .invite-scene__line--5 { transform: rotate(8deg) scaleX(0.88); animation-delay: 2.9s; }
-  .invite-scene__line--6 { transform: rotate(48deg) scaleX(1.12); animation-delay: 3.6s; }
-  .invite-scene__line--7 { transform: rotate(94deg) scaleX(0.78); animation-delay: 4.3s; }
-  .invite-scene__line--8 { transform: rotate(142deg) scaleX(1); animation-delay: 5s; }
+  .invite-scene__line--1 { --line-angle: -166deg; transform: rotate(var(--line-angle)) scaleX(0.72); animation-delay: 0.1s; }
+  .invite-scene__line--2 { --line-angle: -132deg; transform: rotate(var(--line-angle)) scaleX(1.05); animation-delay: 0.8s; }
+  .invite-scene__line--3 { --line-angle: -92deg; transform: rotate(var(--line-angle)) scaleX(0.8); animation-delay: 1.5s; }
+  .invite-scene__line--4 { --line-angle: -42deg; transform: rotate(var(--line-angle)) scaleX(1.18); animation-delay: 2.2s; }
+  .invite-scene__line--5 { --line-angle: 8deg; transform: rotate(var(--line-angle)) scaleX(0.88); animation-delay: 2.9s; }
+  .invite-scene__line--6 { --line-angle: 48deg; transform: rotate(var(--line-angle)) scaleX(1.12); animation-delay: 3.6s; }
+  .invite-scene__line--7 { --line-angle: 94deg; transform: rotate(var(--line-angle)) scaleX(0.78); animation-delay: 4.3s; }
+  .invite-scene__line--8 { --line-angle: 142deg; transform: rotate(var(--line-angle)) scaleX(1); animation-delay: 5s; }
 
   @keyframes ornamentBloom {
     0%, 100% {
@@ -70,7 +71,7 @@
     }
     82% {
       opacity: 0;
-      transform: translateX(1.5rem) rotate(var(--line-angle, 0deg)) scale(1.08);
+      transform: translateX(1.5rem) rotate(var(--line-angle)) scale(1.08);
     }
   }
 
