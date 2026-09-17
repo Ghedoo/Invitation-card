@@ -81,12 +81,10 @@ export default function App() {
       if (!scrollElement) return;
 
       const startScroll = scrollElement.scrollTop;
+      const getMaxScroll = () =>
+        Math.max(0, scrollElement.scrollHeight - scrollElement.clientHeight);
 
-      const initialMaxScroll =
-        scrollElement.scrollHeight -
-        scrollElement.clientHeight;
-
-      if (initialMaxScroll <= startScroll) {
+      if (getMaxScroll() <= startScroll) {
         return;
       }
 
@@ -109,9 +107,7 @@ export default function App() {
             : 1 -
               Math.pow(-2 * progress + 2, 2) / 2;
 
-        const maxScroll =
-          scrollElement.scrollHeight -
-          scrollElement.clientHeight;
+        const maxScroll = getMaxScroll();
         const currentScroll =
           startScroll +
           (maxScroll - startScroll) *
@@ -124,6 +120,7 @@ export default function App() {
             animateScroll
           );
         } else {
+          scrollElement.scrollTop = getMaxScroll();
           frame = null;
         }
       };
