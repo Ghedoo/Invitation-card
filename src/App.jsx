@@ -39,7 +39,7 @@ export default function App() {
       )}
 
       <Navigation />
-      <MusicButton />
+      <MusicButton autoPlay={cardOpened} />
 
       <main>
         <Hero play={cardOpened} />

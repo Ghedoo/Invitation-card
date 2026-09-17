@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { musicSrc } from "../../data/content";
 import "./MusicButton.css";
 
-export default function MusicButton() {
+export default function MusicButton({ autoPlay = false }) {
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
 
@@ -10,6 +10,13 @@ export default function MusicButton() {
     const audio = audioRef.current;
     return () => audio?.pause();
   }, []);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!autoPlay || !audio) return;
+
+    audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  }, [autoPlay]);
 
   function toggle() {
     const audio = audioRef.current;

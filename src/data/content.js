@@ -64,4 +64,4 @@ export const navLinks = [
   { id: "rsvp", label: "تأكيد الحضور" },
 ];
 
-export const musicSrc = "/music.mp3";
+export const musicSrc = "/WhatsApp Audio 2026-09-17 at 4.26.03 PM.mpeg";
