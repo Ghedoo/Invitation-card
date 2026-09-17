@@ -49,7 +49,7 @@ export default function App() {
     let stopped = false;
 
     // مدة السكرول: 60 ثانية
-    const duration = 120000;
+    const duration = 60000;
 
     // إيقاف الـ Auto Scroll
     const stopAutoScroll = () => {
