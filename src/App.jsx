@@ -29,6 +29,19 @@ export default function App() {
     document.body.style.overflow = cardOpened ? "" : "hidden";
   }, [cardOpened]);
 
+  useEffect(() => {
+    if (!cardOpened) return;
+
+    const timer = window.setTimeout(() => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const targetScroll = Math.min(window.innerHeight * 0.78, maxScroll);
+
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    }, 250);
+
+    return () => window.clearTimeout(timer);
+  }, [cardOpened]);
+
   return (
     <>
       <AmbientBackground />
