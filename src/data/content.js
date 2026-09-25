@@ -23,7 +23,7 @@ export const hero = {
 };
 
 export const story = {
-  eyebrow: "قصتنا",
+  eyebrow: "Our Story",
   title: "حكايتنا",
   paragraphs: [
     "بدأت الحكاية بلقاء عابر، لم يكن أحد يتوقع أن يتحوّل إلى أجمل بداية. بين حديث بسيط وابتسامة صادقة، وُلدت رابطة لم تتوقف عن النمو يومًا بعد يوم.",
@@ -39,12 +39,12 @@ export const eventDetails = [
 ];
 
 export const gallery = [
-  { src: "/src/assets/images/gallery-1.jpg", alt: "لحظة من قصتنا — الأولى" },
-  { src: "/src/assets/images/gallery-2.jpg", alt: "لحظة من قصتنا — الثانية" },
-  { src: "/src/assets/images/gallery-3.jpg", alt: "لحظة من قصتنا — الثالثة" },
-  { src: "/src/assets/images/gallery-4.jpg", alt: "لحظة من قصتنا — الرابعة" },
-  { src: "/src/assets/images/gallery-5.jpg", alt: "لحظة من قصتنا — الخامسة" },
-  { src: "/src/assets/images/gallery-6.jpg", alt: "لحظة من قصتنا — السادسة" },
+  { src: "/src/assets/images/WhatsApp Image 2026-09-25 at 2.36.34 PM.jpeg", alt: "لحظة من قصتنا — الأولى" },
+  // { src: "/src/assets/images/gallery-2.jpg", alt: "لحظة من قصتنا — الثانية" },
+  // { src: "/src/assets/images/gallery-3.jpg", alt: "لحظة من قصتنا — الثالثة" },
+  // { src: "/src/assets/images/gallery-4.jpg", alt: "لحظة من قصتنا — الرابعة" },
+  // { src: "/src/assets/images/gallery-5.jpg", alt: "لحظة من قصتنا — الخامسة" },
+  // { src: "/src/assets/images/gallery-6.jpg", alt: "لحظة من قصتنا — السادسة" },
 ];
 
 export const location = {
@@ -56,12 +56,12 @@ export const location = {
 };
 
 export const navLinks = [
-  { id: "home", label: "الرئيسية" },
-  { id: "story", label: "قصتنا" },
-  { id: "event", label: "المناسبة" },
-  { id: "gallery", label: "معرض الصور" },
-  { id: "location", label: "الموقع" },
-  { id: "rsvp", label: "تأكيد الحضور" },
+  { id: "home", label: "Home" },
+  { id: "story", label: "Our Story" },
+  { id: "event", label: "The Occasion" },
+  { id: "gallery", label: "Our Image" },
+  { id: "location", label: "the site" },
+  { id: "rsvp", label: "Confirm Attendance" },
 ];
 
 export const musicSrc = "/WhatsApp Audio 2026-09-17 at 4.26.03 PM.mpeg";
