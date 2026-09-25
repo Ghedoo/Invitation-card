@@ -3,8 +3,8 @@
 // ============================================================
 
 export const couple = {
-  groom: "Al-Sharqawi",
-  bride: "Al-Qadiri",
+  groom: "Bassant",
+  bride: "Ragheed",
 };
 
 // موعد المناسبة (بتوقيت المتصفح المحلي) — يُستخدم في العداد التنازلي أيضًا
@@ -18,7 +18,7 @@ export const eventDateDisplay = {
 };
 
 export const hero = {
-  kicker: "بمشاركة العائلتين الكريمتين",
+  // kicker: "بمشاركة العائلتين الكريمتين",
   invite: "يتشرفان بدعوتكم لحضور حفل خطوبتهما",
 };
 
