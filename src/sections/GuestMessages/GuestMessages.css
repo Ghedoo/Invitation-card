@@ -1,0 +1,31 @@
+.guest-messages__container {
+  max-width: 760px;
+}
+
+.guest-messages__list {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.guest-messages__item {
+  padding: var(--space-md) var(--space-lg);
+  border-inline-start: 2px solid var(--gold);
+  background: rgba(201, 168, 118, 0.08);
+  text-align: start;
+}
+
+.guest-messages__item strong {
+  color: var(--gold-deep);
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+}
+
+.guest-messages__item p {
+  margin-top: 0.3rem;
+  color: var(--ink);
+}
+
+.guest-messages__notice {
+  text-align: center;
+  color: var(--ink-soft);
+}

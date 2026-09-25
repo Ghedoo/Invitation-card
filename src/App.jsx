@@ -10,11 +10,14 @@ import Event from "./sections/Event/Event";
 import Gallery from "./sections/Gallery/Gallery";
 import Location from "./sections/Location/Location";
 import RSVP from "./sections/RSVP/RSVP";
+import GuestMessages from "./sections/GuestMessages/GuestMessages";
 import Footer from "./sections/Footer/Footer";
+import AdminPage from "./pages/AdminPage";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [cardOpened, setCardOpened] = useState(false);
+  const isAdminRoute = window.location.pathname === "/admin";
 
   // شاشة التحميل
   useEffect(() => {
@@ -33,12 +36,21 @@ export default function App() {
 
   // منع تمرير الصفحة أثناء ظهور البطاقة
   useEffect(() => {
+    if (isAdminRoute) {
+      document.body.style.overflow = "auto";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+
     document.body.style.overflow = cardOpened ? "" : "hidden";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [cardOpened]);
+  }, [cardOpened, isAdminRoute]);
+
+  if (isAdminRoute) return <AdminPage />;
 
   // Auto Scroll بعد فتح البطاقة
   useEffect(() => {
@@ -198,6 +210,7 @@ export default function App() {
         <Gallery />
         <Location />
         <RSVP />
+        <GuestMessages />
       </main>
 
       <Footer />
