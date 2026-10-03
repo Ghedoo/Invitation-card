@@ -9,10 +9,10 @@ export default function Event() {
     <section id="event" className="event section section--ivory">
       <div className="container">
         <RevealOnScroll className="section-head" as="div">
-          <span className="eyebrow">تفاصيل المناسبة</span>
-          <h2 className="section-title">يومنا المنتظر</h2>
+          <span className="eyebrow">Event Details</span>
+          <h2 className="section-title">Our Special Day</h2>
           <p className="section-sub">
-            نتشرف بحضوركم لمشاركتنا هذه اللحظة الغالية على قلوبنا.
+            We are thrilled to have you join us for this joyous occasion.
           </p>
         </RevealOnScroll>
 

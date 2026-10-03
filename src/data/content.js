@@ -8,10 +8,10 @@ export const couple = {
 };
 
 // موعد المناسبة (بتوقيت المتصفح المحلي) — يُستخدم في العداد التنازلي أيضًا
-export const eventDate = new Date("2026-10-10T19:00:00");
+export const eventDate = new Date("2026-10-31T19:00:00");
 
 export const eventDateDisplay = {
-  day: "10",
+  day: "31",
   weekday: "Saturday",
   month: "October 2026",
   time: "7:00 PM",
@@ -32,10 +32,10 @@ export const story = {
 };
 
 export const eventDetails = [
-  { label: "Story", value: "Saturday, October 10, 2026" },
+  { label: "Story", value: "Saturday, October 31, 2026" },
   { label: "Time", value: "7:00 PM" },
-  { label: "Venue", value: "Gold Lily Hall" },
-  { label: "Address", value: "Corniche Road, First Floor — Riyadh" },
+  { label: "Venue", value: "Villa-Pink" },
+  { label: "Address", value: "after Catract Hotel, Al-Marioteya, Saqqara Tourist Road"},
 ];
 
 export const gallery = [
@@ -48,11 +48,11 @@ export const gallery = [
 ];
 
 export const location = {
-  venueName: "المعادي",
-  address: "طريق الكورنيش، الدور الأول — الرياض، المملكة العربية السعودية",
-  mapsUrl: "https://maps.app.goo.gl/kH4XX7PDq3RMSa6W9",
+  venueName: "المريوطية",
+  address: " بعد فندق كتراكت ب 500م, المريوطية, طريق سقارة السياحي، الحرانية، أبو النمرس، محافظة الجيزة ",
+  mapsUrl: "https://maps.app.goo.gl/yo2LYxE2PazpUBti7",
   embedSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d463390.5!2d46.6!3d24.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQyJzAwLjAiTiA0NsKwNDInMDAuMCJF!5e0!3m2!1sar!2ssa!4v0",
+    "https://maps.app.goo.gl/yo2LYxE2PazpUBti7",
 };
 
 export const navLinks = [

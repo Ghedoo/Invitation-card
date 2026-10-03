@@ -14,10 +14,10 @@ function getRemaining() {
 }
 
 const UNITS = [
-  { key: "days", label: "يوم" },
-  { key: "hours", label: "ساعة" },
-  { key: "minutes", label: "دقيقة" },
-  { key: "seconds", label: "ثانية" },
+  { key: "days", label: "day" },
+  { key: "hours", label: "hour" },
+  { key: "minutes", label: "minute" },
+  { key: "seconds", label: "second" },
 ];
 
 export default function Countdown() {

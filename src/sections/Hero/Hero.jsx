@@ -87,7 +87,7 @@ export default function Hero({ play }) {
         <div className="hero__verses" dir="rtl">
           <p>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
           <p>وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
-          <p>اليوم نطق قلبي قبولاً وأصبحت له شرعاً وقانوناً</p>
+          <p>اليوم بدأت أجمل حكاياتنا، وكتب الله لنا أولى خطوات العمر معاً. ❤️</p>
         </div>
         <p className="hero__kicker">{hero.kicker}</p>
         <h1 className="hero__names">

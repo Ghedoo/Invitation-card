@@ -1,6 +1,6 @@
 import RevealOnScroll from "../../components/RevealOnScroll/RevealOnScroll";
 import { location } from "../../data/content";
-import venueImg from "../../assets/images/venue.jpg";
+import venueImg from "../../assets/images/vilaa pink.jpeg";
 import "./Location.css";
 
 export default function Location() {
@@ -8,8 +8,8 @@ export default function Location() {
     <section id="location" className="location section">
       <div className="container">
         <RevealOnScroll className="section-head" as="div">
-          <span className="eyebrow">كيف تصلون</span>
-          <h2 className="section-title">الموقع</h2>
+          <span className="eyebrow">How do you pray?</span>
+          <h2 className="section-title">the site</h2>
         </RevealOnScroll>
 
         <RevealOnScroll className="location__panel" as="div">
@@ -24,8 +24,7 @@ export default function Location() {
               href={location.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-            >
-              فتح في خرائط جوجل
+            > Open in Google Maps
             </a>
           </div>
         </RevealOnScroll>
