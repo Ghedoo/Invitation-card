@@ -58,7 +58,7 @@ export default function Countdown() {
           onComplete: () => {
             gsap.set(el, { y: 0, opacity: 1 });
           },
-        }
+        },
       );
     });
 
